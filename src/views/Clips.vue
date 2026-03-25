@@ -216,6 +216,106 @@ const clips = [
             time: 737,
             display: '12:17',
           },
+          {
+            time: 1122,
+            display: '18:42',
+          },
+          {
+            time: 1141,
+            display: '19:01',
+          },
+          {
+            time: 1650,
+            display: '27:30',
+          },
+          {
+            time: 1930,
+            display: '32:10',
+          },
+          {
+            time: 2781,
+            display: '46:21',
+          },
+          {
+            time: 4240,
+            display: '1:10:40',
+          },
+          {
+            time: 6627,
+            display: '1:50:27',
+          },
+          {
+            time: 6783,
+            display: '1:53:03',
+          },
+          {
+            time: 6880,
+            display: '1:54:40',
+          },
+          {
+            time: 6947,
+            display: '1:55:47',
+          },
+          {
+            time: 7036,
+            display: '1:57:16',
+          },
+          {
+            time: 7100,
+            display: '1:58:20',
+          },
+          {
+            time: 7156,
+            display: '1:59:16',
+          },
+          {
+            time: 7239,
+            display: '2:00:39',
+          },
+          {
+            time: 7374,
+            display: '2:02:54',
+          },
+          {
+            time: 7465,
+            display: '2:04:25',
+          },
+          {
+            time: 7982,
+            display: '2:13:02',
+          },
+          {
+            time: 8041,
+            display: '2:14:01',
+          },
+          {
+            time: 8402,
+            display: '2:20:02',
+          },
+          {
+            time: 9365,
+            display: '2:36:05',
+          },
+          {
+            time: 9547,
+            display: '2:39:07',
+          },
+          {
+            time: 9692,
+            display: '2:41:32',
+          },
+          {
+            time: 10088,
+            display: '2:48:08',
+          },
+          {
+            time: 10151,
+            display: '2:49:11',
+          },
+          {
+            time: 10390,
+            display: '2:53:10',
+          },
         ],
       },
       {
@@ -265,6 +365,69 @@ const clips = [
           {
             time: 10797,
             display: '2:59:57',
+          },
+          {
+            time: 10844,
+            display: '3:00:44',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'ENReco Chapter 1 Episode 6. Sep 6th, 2024',
+    povs: [
+      {
+        name: 'ERB POV',
+        id: '5R01-igo4sM',
+        timestamps: [
+          {
+            time: 2050,
+            display: '34:10',
+          },
+          {
+            time: 2363,
+            display: '39:23',
+          },
+          {
+            time: 2410,
+            display: '40:10',
+          },
+          {
+            time: 2457,
+            display: '40:57',
+          },
+          {
+            time: 2552,
+            display: '42:32',
+          },
+          {
+            time: 2797,
+            display: '46:37',
+          },
+          {
+            time: 2901,
+            display: '48:21',
+          },
+          {
+            time: 3369,
+            display: '56:09',
+          },
+          {
+            time: 3562,
+            display: '59:22',
+          },
+          {
+            time: 4915,
+            display: '1:21:55',
+          },
+          {
+            time: 4990,
+            display: '1:23:10',
+          },
+          {
+            time: 5041,
+            display: '1:24:01',
           },
         ],
       },
