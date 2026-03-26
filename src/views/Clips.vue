@@ -429,6 +429,134 @@ const clips = [
             time: 5041,
             display: '1:24:01',
           },
+          {
+            time: 7061,
+            display: '1:57:41',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'ENReco Chapter 1 Episode 7. Sep 7th, 2024',
+    povs: [
+      {
+        name: 'ERB POV',
+        id: 'Gw0dZbPKTG4',
+        timestamps: [
+          {
+            time: 823,
+            display: '13:43',
+          },
+          {
+            time: 4713,
+            display: '1:18:33',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'ENReco Chapter 1 Episode 8. Sep 8th, 2024',
+    povs: [
+      {
+        name: 'Nerissa POV',
+        id: 'qdYQ5j-0sQI',
+        timestamps: [
+          {
+            time: 780,
+            display: '13:00',
+          },
+          {
+            time: 1823,
+            display: '30:23',
+          },
+          {
+            time: 2417,
+            display: '40:17',
+          },
+          {
+            time: 2588,
+            display: '43:08',
+          },
+        ],
+      },
+      {
+        name: 'ERB POV',
+        id: '_urPfTQnLes',
+        timestamps: [
+          {
+            time: 5797,
+            display: '1:36:37',
+          },
+          {
+            time: 6842,
+            display: '1:54:02',
+          },
+          {
+            time: 7435,
+            display: '2:03:55',
+          },
+          {
+            time: 7527,
+            display: '2:05:27',
+          },
+          {
+            time: 7604,
+            display: '2:06:44',
+          },
+          {
+            time: 7690,
+            display: '2:08:10',
+          },
+          {
+            time: 7984,
+            display: '2:13:04',
+          },
+          {
+            time: 8133,
+            display: '2:15:33',
+          },
+          {
+            time: 8403,
+            display: '2:20:03',
+          },
+          {
+            time: 8905,
+            display: '2:28:25',
+          },
+          {
+            time: 9620,
+            display: '2:40:20',
+          },
+          {
+            time: 9714,
+            display: '2:41:54',
+          },
+          {
+            time: 12221,
+            display: '3:23:41',
+          },
+          {
+            time: 12304,
+            display: '3:25:04',
+          },
+          {
+            time: 15388,
+            display: '4:16:28',
+          },
+          {
+            time: 15720,
+            display: '4:22:00',
+          },
+          {
+            time: 18870,
+            display: '5:14:30',
+          },
+          {
+            time: 19020,
+            display: '5:21:17',
+          },
         ],
       },
     ],

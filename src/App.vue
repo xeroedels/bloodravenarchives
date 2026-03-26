@@ -9,6 +9,13 @@
 </template>
 
 <style>
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  background: #000;
+}
 .page-enter-from {
   opacity: 0;
   transform: scale(1.02);
