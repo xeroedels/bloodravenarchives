@@ -1,10 +1,31 @@
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-
+import { ref, onMounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { saveProgress, loadProgress } from '@/utils/progress'
+const currentTime = ref({})
 const activePOV = ref({})
+const shouldAutoplay = ref({})
 const router = useRouter()
+const reloadKey = ref({})
+onMounted(() => {
+  clips.forEach((clip, index) => {
+    const saved = loadProgress(index)
 
+    if (saved) {
+      currentTime.value[index] = saved.time
+
+      const povIndex = clip.povs.findIndex((p) => p.id === saved.videoId)
+      if (povIndex !== -1) {
+        activePOV.value[index] = povIndex
+      }
+    }
+  })
+})
+function handleTimestampClick(index, time, videoId) {
+  currentTime.value = { ...currentTime.value, [index]: time }
+
+  saveProgress(index, videoId, time)
+}
 const clips = [
   {
     title: 'First time talking on stream. July 18th, 2024',
@@ -479,6 +500,34 @@ const clips = [
             time: 2588,
             display: '43:08',
           },
+          {
+            time: 3114,
+            display: '51:54',
+          },
+          {
+            time: 3886,
+            display: '1:04:46',
+          },
+          {
+            time: 6483,
+            display: '1:48:03',
+          },
+          {
+            time: 7214,
+            display: '2:00:14',
+          },
+          {
+            time: 7284,
+            display: '2:01:24',
+          },
+          {
+            time: 10371,
+            display: '2:52:51',
+          },
+          {
+            time: 13851,
+            display: '3:50:51',
+          },
         ],
       },
       {
@@ -561,12 +610,267 @@ const clips = [
       },
     ],
   },
+  {
+    title: 'PowerWash Simulator BloodRaven. Oct 16th, 2024',
+    povs: [
+      {
+        name: 'Nerissa POV',
+        id: '6lfDKecsl6g',
+        timestamps: [
+          {
+            time: 405,
+            display: '6:45',
+          },
+          {
+            time: 3962,
+            display: '1:06:02',
+          },
+          {
+            time: 10733,
+            display: '2:58:53',
+          },
+          {
+            time: 10746,
+            display: '2:59:06',
+          },
+        ],
+      },
+      {
+        name: 'ERB POV',
+        id: 'y8Nn0CdTlzU',
+        timestamps: [
+          {
+            time: 353,
+            display: '5:53',
+          },
+          {
+            time: 2687,
+            display: '44:47',
+          },
+          {
+            time: 2902,
+            display: '48:22',
+          },
+          {
+            time: 3913,
+            display: '1:05:13',
+          },
+          {
+            time: 4012,
+            display: '1:06:52',
+          },
+          {
+            time: 4045,
+            display: '1:07:25',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Justice Haunted Investigation. Nov 1st, 2024',
+    povs: [
+      {
+        name: 'Nerissa POV',
+        id: 'KcYUgBvsjLY',
+        timestamps: [
+          {
+            time: 835,
+            display: '13:55',
+          },
+          {
+            time: 904,
+            display: '15:04',
+          },
+          {
+            time: 1109,
+            display: '18:29',
+          },
+          {
+            time: 2514,
+            display: '41:54',
+          },
+          {
+            time: 3452,
+            display: '57:32',
+          },
+          {
+            time: 3591,
+            display: '59:51',
+          },
+          {
+            time: 5085,
+            display: '1:24:45',
+          },
+          {
+            time: 6150,
+            display: '1:42:30',
+          },
+        ],
+      },
+      {
+        name: 'ERB POV',
+        id: 'bdwGIYhBXuU',
+        timestamps: [
+          {
+            time: 565,
+            display: '9:25',
+          },
+          {
+            time: 834,
+            display: '13:54',
+          },
+          {
+            time: 2246,
+            display: '37:26',
+          },
+          {
+            time: 3169,
+            display: '52:49',
+          },
+          {
+            time: 3327,
+            display: '55:27',
+          },
+          {
+            time: 4814,
+            display: '1:20:14',
+          },
+          {
+            time: 5882,
+            display: '1:38:02',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Hololive League of Legends Collab',
+    povs: [
+      {
+        name: 'Nerissa POV',
+        id: '54UVnzsa_OY',
+        timestamps: [
+          {
+            time: 1420,
+            display: '23:40',
+          },
+          {
+            time: 1489,
+            display: '24:49',
+          },
+          {
+            time: 2044,
+            display: '34:04',
+          },
+          {
+            time: 2208,
+            display: '36:48',
+          },
+          {
+            time: 3202,
+            display: '53:22',
+          },
+          {
+            time: 3374,
+            display: '56:14',
+          },
+          {
+            time: 3696,
+            display: '1:01:36',
+          },
+          {
+            time: 4612,
+            display: '1:16:52',
+          },
+          {
+            time: 5312,
+            display: '1:28:32',
+          },
+          {
+            time: 5393,
+            display: '1:29:53',
+          },
+          {
+            time: 5828,
+            display: '1:37:08',
+          },
+          {
+            time: 7229,
+            display: '2:00:29',
+          },
+          {
+            time: 7438,
+            display: '2:03:58',
+          },
+          {
+            time: 7717,
+            display: '2:08:37',
+          },
+          {
+            time: 9579,
+            display: '2:39:39',
+          },
+          {
+            time: 9702,
+            display: '2:41:42',
+          },
+        ],
+      },
+      {
+        name: 'ERB POV',
+        id: 'eCRLPfFYN4c',
+        timestamps: [
+          {
+            time: 957,
+            display: '15:57',
+          },
+          {
+            time: 1030,
+            display: '17:10',
+          },
+          {
+            time: 1534,
+            display: '25:34',
+          },
+          {
+            time: 1748,
+            display: '29:08',
+          },
+          {
+            time: 2739,
+            display: '45:39',
+          },
+          {
+            time: 2915,
+            display: '48:35',
+          },
+          {
+            time: 3234,
+            display: '53:54',
+          },
+          {
+            time: 3677,
+            display: '1:01:17',
+          },
+          {
+            time: 4856,
+            display: '1:20:56',
+          },
+          {
+            time: 5366,
+            display: '1:29:26',
+          },
+        ],
+      },
+    ],
+  },
 ]
 </script>
 
 <template>
   <div class="clips-page">
-    <button class="back-btn" @click="$router.push('/hub')">← Back</button>
+    <button class="back-btn" @click="router.push('/hub')">← Back</button>
 
     <div class="header">
       <h1>BloodRaven Clips</h1>
@@ -592,19 +896,16 @@ const clips = [
         </div>
 
         <iframe
-          :src="`https://www.youtube.com/embed/${clip.povs[activePOV[index] || 0].id}`"
+          :key="activePOV[index] || 0"
+          :src="`https://www.youtube.com/embed/${clip.povs[activePOV[index] || 0].id}?start=${currentTime[index] || 0}&autoplay=1`"
           allowfullscreen
         ></iframe>
-
         <div class="timestamps">
           <span
             v-for="stamp in clip.povs[activePOV[index] || 0].timestamps"
             :key="stamp.time"
             class="timestamp"
-            @click="
-              $event.target.closest('.video-card').querySelector('iframe').src =
-                `https://www.youtube.com/embed/${clip.povs[activePOV[index] || 0].id}?start=${stamp.time}&autoplay=1`
-            "
+            @click="handleTimestampClick(index, stamp.time)"
           >
             ▶ {{ stamp.display }}
           </span>
@@ -614,11 +915,29 @@ const clips = [
   </div>
 </template>
 <style scoped>
+.clips-page,
+.home-page,
+.container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 .clips-page {
   min-height: 100vh;
   background: radial-gradient(circle at top, #0a0a0a, #000);
   color: white;
   padding: 60px;
+}
+
+@media (max-width: 1024px) {
+  .clips-page {
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .clips-page {
+    padding: 20px 15px;
+  }
 }
 
 .back-btn {
@@ -694,12 +1013,28 @@ const clips = [
 
 .header h1 {
   font-size: 52px;
-
-  background: linear-gradient(90deg, #2aa8ff, #ff0033);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
+@media (max-width: 1024px) {
+  .header h1 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header h1 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .back-btn {
+    top: 15px;
+    left: 15px;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
 .header p {
   color: #cfcfcf;
   margin-top: 12px;
@@ -707,8 +1042,8 @@ const clips = [
 
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }
 
 .video-card {
@@ -735,35 +1070,38 @@ const clips = [
 
   box-shadow: 0 0 20px rgba(42, 168, 255, 0.4);
 }
-@media (max-width: 700px) {
-  .clips-page {
-    padding: 30px 20px;
-  }
-
+@media (max-width: 640px) {
   .header h1 {
-    font-size: 36px;
-  }
-
-  .video-grid {
-    gap: 25px;
+    font-size: 28px;
   }
 
   .video-card h3 {
     font-size: 16px;
   }
+
+  .video-grid {
+    gap: 20px;
+  }
 }
+
 .timestamps {
   padding: 0 16px 16px;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  cursor: pointer;
 }
 
 .timestamp {
   font-size: 14px;
-  color: #38bdf8;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  padding: 6px 8px;
+}
+
+@media (max-width: 640px) {
+  .timestamp {
+    font-size: 13px;
+    padding: 8px;
+  }
 }
 
 .timestamp:hover {
@@ -777,8 +1115,8 @@ const clips = [
   display: flex;
   gap: 8px;
   padding: 0 16px 10px;
+  flex-wrap: wrap;
 }
-
 .pov-tabs button {
   background: #1a1a1a;
   border: 1px solid #333;

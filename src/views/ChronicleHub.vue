@@ -64,6 +64,16 @@ function resetTilt(e) {
 </template>
 
 <style scoped>
+.home-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  padding: 20px;
+}
 .hub {
   height: 100vh;
   background: radial-gradient(circle at top, #0b0b0b, #000);
@@ -113,7 +123,20 @@ function resetTilt(e) {
     0 0 15px rgba(42, 168, 255, 0.4),
     0 0 25px rgba(255, 0, 51, 0.4);
 }
-
+h1 {
+  word-break: break-word;
+  max-width: 100%;
+  word-break: break-word;
+  text-align: center;
+  font-size: clamp(28px, 8vw, 64px);
+  line-height: 1.2;
+}
+@media (max-width: 640px) {
+  h1 {
+    font-size: 32px !important;
+    line-height: 1.2;
+  }
+}
 .subtitle {
   color: #d0d0d0;
   font-size: 18px;

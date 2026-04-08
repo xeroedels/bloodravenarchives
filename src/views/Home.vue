@@ -48,6 +48,8 @@ function enterArchive() {
   background: black;
   color: white;
   position: relative;
+  overflow-x: hidden;
+  padding: 0 16px;
 }
 
 .home::before {
@@ -133,8 +135,8 @@ button:active {
 }
 
 .home h1 {
-  font-size: 72px;
-  letter-spacing: 6px;
+  font-size: clamp(2.5rem, 8vw, 72px);
+  letter-spacing: clamp(1px, 1vw, 6px);
   margin-bottom: 16px;
 
   background: linear-gradient(90deg, #2aa8ff, #ff0033);
@@ -144,7 +146,11 @@ button:active {
   text-shadow:
     0 0 15px rgba(42, 168, 255, 0.6),
     0 0 25px rgba(255, 0, 51, 0.6);
+
+  text-align: center;
+  word-break: break-word;
 }
+
 .home p {
   font-size: 20px;
   opacity: 0.8;
@@ -152,8 +158,16 @@ button:active {
 }
 
 .hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 0 16px;
   text-align: center;
-  max-width: 600px;
 }
 
 @keyframes bloodFlow {
