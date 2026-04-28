@@ -1,6 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { ref, onMounted } from 'vue'
+import * as Icons from 'lucide-vue-next'
 
 const mouseX = ref(0)
 const mouseY = ref(0)
@@ -20,6 +21,13 @@ const router = useRouter()
 function enterArchive() {
   router.push('/hub')
 }
+
+function scrollToSocials() {
+  const el = document.getElementById('socials')
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 </script>
 
 <template>
@@ -29,18 +37,72 @@ function enterArchive() {
       <p>A fan chronicle of BloodRaven moments.</p>
 
       <button @click="enterArchive">Enter Chronicle</button>
+      <div class="scroll-hint" @click="scrollToSocials">
+        <Icons.ChevronDown size="28" />
+      </div>
     </div>
+    <section id="socials" class="social-section">
+      <div class="social-container">
+        <p class="social-title">Follow their social media♥️💙</p>
+        <div class="people-socials">
+          <div class="person">
+            <p class="person-name">Elizabeth Rose Bloodflame💄</p>
+            <div class="social-links">
+              <a href="https://x.com/ERBloodflame?s=20" target="_blank">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path
+                    d="M18.244 2H21.5l-7.5 8.57L22 22h-6.828l-5.34-7.01L3.5 22H0l8.02-9.16L0 2h6.828l4.82 6.32L18.244 2zm-1.2 18h1.88L7.05 4H5.06l11.984 16z"
+                  />
+                </svg>
+              </a>
+              <a href="https://www.youtube.com/@holoen_erbloodflame" target="_blank">
+                <Icons.Youtube size="20" />
+              </a>
+              <a href="https://www.instagram.com/lizrose_holoen/" target="_blank">
+                <Icons.Instagram size="20" />
+              </a>
+            </div>
+          </div>
+          <div class="person">
+            <p class="person-name">Nerissa Ravencroft🎼</p>
+            <div class="social-links">
+              <a href="https://x.com/nerissa_en?s=20" target="_blank">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path
+                    d="M18.244 2H21.5l-7.5 8.57L22 22h-6.828l-5.34-7.01L3.5 22H0l8.02-9.16L0 2h6.828l4.82 6.32L18.244 2zm-1.2 18h1.88L7.05 4H5.06l11.984 16z"
+                  />
+                </svg>
+              </a>
+              <a href="https://www.youtube.com/@NerissaRavencroft" target="_blank">
+                <Icons.Youtube size="20" />
+              </a>
+              <a href="https://www.instagram.com/nerissa_ravencroft/" target="_blank">
+                <Icons.Instagram size="20" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <div class="fire-layer">
       <div class="flame red"></div>
       <div class="flame blue"></div>
-      <span v-for="n in 60" :key="n" class="spark" :style="{ '--i': n }"></span>
+      <span
+        v-for="i in 60"
+        :key="i"
+        class="spark"
+        :style="{
+          '--i': Math.random(),
+          '--j': Math.random(),
+        }"
+      ></span>
     </div>
   </div>
 </template>
 
 <style scoped>
 .home {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -168,6 +230,8 @@ button:active {
 
   padding: 0 16px;
   text-align: center;
+  padding-bottom: 120px;
+  position: relative;
 }
 
 @keyframes bloodFlow {
@@ -184,10 +248,10 @@ button:active {
 
 .fire-layer {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 300px;
+  height: 100%;
   pointer-events: none;
   overflow: hidden;
 }
@@ -215,27 +279,41 @@ button:active {
 
 .spark {
   position: absolute;
-  bottom: -10px;
 
   width: 3px;
   height: 3px;
   border-radius: 50%;
 
   background: #38bdf8;
-
   opacity: 0.8;
 
-  animation: sparkRise linear infinite;
-
   filter: drop-shadow(0 0 6px currentColor);
-  animation-delay: calc(var(--i) * 0.2s);
+
+  top: calc(100% * var(--i));
+  left: calc(100% * var(--j));
+
+  animation: sparkFloat 6s linear infinite;
+  animation-delay: calc(var(--i) * -6s);
 }
 
+@keyframes sparkFloat {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120px) scale(0.4);
+    opacity: 0;
+  }
+}
 .spark:nth-child(2n) {
   background: #38bdf8;
 }
 
-.spark:nth-child(3n) {
+/* .spark:nth-child(3n) {
   background: #ff0033;
 }
 
@@ -276,8 +354,8 @@ button:active {
 
 .spark:nth-child(11n) {
   left: 90%;
-}
-
+} */
+/* 
 @keyframes sparkRise {
   0% {
     transform: translateY(0) scale(1);
@@ -292,7 +370,7 @@ button:active {
     transform: translateY(-350px) scale(0.4);
     opacity: 0;
   }
-}
+} */
 
 @keyframes flameMove {
   0% {
@@ -301,6 +379,178 @@ button:active {
 
   100% {
     transform: scale(1.2) translateY(-20px);
+  }
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+
+  transition: all 0.3s ease;
+}
+
+.social-links a:nth-child(1):hover {
+  color: #1da1f2;
+  box-shadow: 0 0 20px #1da1f2;
+}
+
+.social-links a:nth-child(2):hover {
+  color: #ff0000;
+  box-shadow: 0 0 20px #ff0000;
+}
+
+.social-links a:nth-child(3):hover {
+  color: #e1306c;
+  box-shadow: 0 0 20px #e1306c;
+}
+.social-links a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 77, 109, 0.5);
+}
+
+.social-section {
+  margin-top: -60px;
+  text-align: center;
+  padding-bottom: 80px;
+}
+
+.social-title {
+  margin-bottom: 30px;
+  opacity: 0.7;
+  letter-spacing: 1px;
+  margin-top: 60px;
+}
+
+.people-socials {
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: 50px;
+  flex-direction: row;
+}
+
+.person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+  min-height: 48px;
+  min-width: 250px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  transition: 0.3s;
+  max-width: 250px;
+  width: auto;
+  flex: 1;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.person-name {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-bottom: 4px;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.person:nth-child(1) .person-name {
+  color: #ff0000;
+}
+
+.person:nth-child(2) .person-name {
+  color: #4e46ed;
+}
+.person:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+@media (max-width: 768px) {
+  .people-socials {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  .person {
+    width: 100%;
+  }
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  opacity: 0.6;
+
+  animation: fadeIn 1.5s ease forwards;
+  z-index: 10;
+  animation-delay: 1s;
+  cursor: pointer;
+}
+.scroll-hint:hover {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.1);
+}
+
+.scroll-hint svg {
+  color: white;
+  filter: drop-shadow(0 0 6px rgba(255, 77, 109, 0.6));
+  opacity: 0.9;
+  animation: float 2s ease-in-out infinite alternate;
+}
+.x-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+
+  transition: 0.3s;
+}
+
+.x-icon:hover {
+  box-shadow: 0 0 20px #1da1f2;
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(15px);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(6px);
   }
 }
 </style>

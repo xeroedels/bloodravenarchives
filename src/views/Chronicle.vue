@@ -32,7 +32,7 @@ const selectedDate = ref(null)
         </div>
 
         <Transition name="slide">
-          <div v-if="showCalendar" class="right-panel">
+          <div v-show="showCalendar" class="right-panel">
             <CalendarView v-model="selectedDate" @closeCalendar="showCalendar = false" />
           </div>
         </Transition>
@@ -43,8 +43,6 @@ const selectedDate = ref(null)
 
 <style scoped>
 .chronicle-layout {
-  position: relative;
-  z-index: 1;
   display: flex;
   gap: 40px;
   padding: 40px;
@@ -53,6 +51,7 @@ const selectedDate = ref(null)
 .left-panel {
   flex: 1;
   min-width: 0;
+  overflow-x: hidden;
 }
 
 .right-panel {
@@ -64,12 +63,13 @@ const selectedDate = ref(null)
   background: #111;
   padding: 20px;
   border-radius: 12px;
+  z-index: 5;
 }
 
 .page-bg {
   position: relative;
   min-height: 100vh;
-  /* background: url('/G30eUk5WoAAAVti.png'); */
+  /* background: url('/.png'); */
 }
 
 .page-bg::before {
@@ -212,6 +212,22 @@ const selectedDate = ref(null)
 @media (max-width: 900px) {
   .right-panel {
     order: -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .back-home {
+    left: 12px;
+    top: 12px;
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  .calendar-btn {
+    right: 12px;
+    top: 12px;
+    padding: 10px 14px;
+    font-size: 14px;
   }
 }
 </style>

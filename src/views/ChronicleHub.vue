@@ -24,6 +24,16 @@ function resetTilt(e) {
   const card = e.currentTarget
   card.style.transform = 'perspective(700px) rotateX(0) rotateY(0) scale(1)'
 }
+
+function pressCard(e) {
+  const card = e.currentTarget
+  card.style.transform += 'scale(0.96)'
+}
+
+function releaseCard(e) {
+  const card = e.currentTarget
+  card.style.transform = card.style.transform.replace(' scale(0.96)', '')
+}
 </script>
 
 <template>
@@ -34,7 +44,7 @@ function resetTilt(e) {
     <button class="back" @click="router.push('/')">← Back</button>
 
     <div class="center">
-      <h1 class="title">Bloodraven Chronicle</h1>
+      <h1 class="title">BloodRaven Chronicle</h1>
 
       <p class="subtitle">Explore the archives or watch their oldge marriage couple moments</p>
 
@@ -43,16 +53,20 @@ function resetTilt(e) {
           class="card archive"
           @mousemove="tiltCard"
           @mouseleave="resetTilt"
+          @mousedown="pressCard"
+          @mouseup="releaseCard"
           @click="router.push('/archive')"
         >
           <span>Archives</span>
-          <p>Timeline of Bloodraven events</p>
+          <p>Timeline of BloodRaven events</p>
         </div>
 
         <div
           class="card clips"
           @mousemove="tiltCard"
           @mouseleave="resetTilt"
+          @mousedown="pressCard"
+          @mouseup="releaseCard"
           @click="router.push('/clips')"
         >
           <span>Clips</span>
@@ -108,8 +122,14 @@ function resetTilt(e) {
 }
 
 .center {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+
   text-align: center;
   z-index: 2;
+
+  padding: 0 16px;
 }
 
 .title {
@@ -146,8 +166,9 @@ h1 {
 
 .hub-buttons {
   display: flex;
-  gap: 60px;
+  gap: 40px;
   justify-content: center;
+  width: 100%;
 }
 
 .card {
@@ -405,5 +426,21 @@ h1 {
     padding: 10px 18px;
     font-size: 14px;
   }
+}
+
+.card:active {
+  filter: brightness(1.1);
+}
+
+.archive:active {
+  box-shadow:
+    0 0 30px #ff0033,
+    0 0 80px #ff003360;
+}
+
+.clips:active {
+  box-shadow:
+    0 0 30px #2aa8ff,
+    0 0 80px #2aa8ff60;
 }
 </style>

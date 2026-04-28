@@ -143,9 +143,10 @@ function selectDay(day) {
   setTimeout(() => {
     const el = document.getElementById('timeline-section')
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      el.scrollIntoView({ behavior: 'smooth' })
     }
   }, 150)
+  window.scrollTo({ top: window.scrollY })
 }
 function applyDate() {
   currentDate.value = new Date(selectedYear.value, month.value, 1)
@@ -254,6 +255,7 @@ function nextPickerYear() {
   max-width: 100%;
   position: relative;
   background: radial-gradient(circle at top, rgba(20, 20, 40, 0.4), transparent 70%);
+  z-index: 20;
 }
 
 .calendar-header {

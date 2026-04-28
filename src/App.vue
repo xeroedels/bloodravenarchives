@@ -2,13 +2,16 @@
 
 <template>
   <router-view v-slot="{ Component }">
-    <Transition name="page" mode="out-in">
+    <Transition name="fade" mode="out-in">
       <component :is="Component" />
     </Transition>
   </router-view>
 </template>
 
 <style>
+#app {
+  overflow-x: hidden;
+}
 html,
 body,
 #app {
@@ -16,48 +19,48 @@ body,
   padding: 0;
   background: #000;
 }
-.page-enter-from {
-  opacity: 0;
-  transform: scale(1.02);
+.page-enter-active,
+.page-leave-active {
+  transition:
+    opacity 0.4s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
 
-.page-enter-active {
-  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  filter: blur(0);
 }
 
 .page-enter-to {
   opacity: 1;
-  transform: scale(1);
+  transform: translateY(0) scale(1);
+  filter: blur(0);
 }
 
 .page-leave-from {
   opacity: 1;
-  transform: scale(1);
-}
-
-.page-leave-active {
-  transition: all 0.6s ease;
+  transform: translateY(0) scale(1);
 }
 
 .page-leave-to {
   opacity: 0;
-  transform: scale(0.98);
+  transform: translateY(-30px) scale(1.05);
 }
 
-.page-enter-active,
-.page-leave-active {
-  transition:
-    opacity 0.35s ease,
-    transform 0.35s ease;
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.35s ease;
 }
 
-.page-enter-from {
+.fade-enter-from {
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(20px);
 }
 
-.page-leave-to {
+.fade-leave-to {
   opacity: 0;
-  transform: translateY(-10px);
+  transform: translateY(-20px);
 }
 </style>
