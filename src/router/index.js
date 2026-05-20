@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import ChronicleHub from '../views/ChronicleHub.vue'
 import Chronicle from '../views/Chronicle.vue'
 import Clips from '../views/Clips.vue'
+import QuizView from '@/views/QuizView.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/clips',
     name: 'Clips',
     component: Clips,
+  },
+  {
+    path: '/quiz',
+    name: 'Quiz',
+    component: QuizView,
   },
 ]
 

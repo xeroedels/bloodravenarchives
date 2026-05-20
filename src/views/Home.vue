@@ -22,6 +22,10 @@ function enterArchive() {
   router.push('/hub')
 }
 
+function goQuiz() {
+  router.push('/quiz')
+}
+
 function scrollToSocials() {
   const el = document.getElementById('socials')
   if (el) {
@@ -37,6 +41,10 @@ function scrollToSocials() {
       <p>A fan chronicle of BloodRaven moments.</p>
 
       <button @click="enterArchive">Enter Chronicle</button>
+      <button class="mystery-btn" @click="goQuiz">
+        <img src="/nerissafwustaring.png" alt="left" />
+        <img src="/lizfwustaring.png" alt="right" />
+      </button>
       <div class="scroll-hint" @click="scrollToSocials">
         <Icons.ChevronDown size="28" />
       </div>
@@ -552,5 +560,94 @@ button:active {
   to {
     transform: translateY(6px);
   }
+}
+
+.mystery-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+
+  gap: 6px;
+
+  width: 44px;
+  height: 44px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(255, 80, 120, 0.3);
+
+  background: radial-gradient(circle at center, #1a1a25, #0a0a12);
+
+  color: rgba(255, 120, 160, 0.8);
+  font-size: 18px;
+
+  cursor: pointer;
+
+  opacity: 0.55;
+
+  backdrop-filter: blur(6px);
+
+  transition: all 0.3s ease;
+  animation: pulseGlow 3s infinite ease-in-out;
+  z-index: 9999;
+  transform: scale(0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mystery-btn:hover {
+  opacity: 1;
+
+  transform: scale(1.15);
+
+  color: #ff4d88;
+
+  border-color: rgba(255, 80, 120, 0.6);
+
+  box-shadow:
+    0 0 12px rgba(255, 80, 120, 0.6),
+    0 0 30px rgba(255, 80, 120, 0.3);
+}
+
+.mystery-btn span {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transform: translateY(-1px);
+}
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 4px rgba(255, 80, 120, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 80, 120, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 4px rgba(255, 80, 120, 0.15);
+  }
+}
+.mystery-btn img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  pointer-events: none;
+}
+.mystery-btn:hover img {
+  transform: scale(1.2);
+}
+.mystery-btn img:first-child {
+  transform: translateX(1px);
+  transition: transform 0.3s;
+}
+
+.mystery-btn img:last-child {
+  transform: translateX(-1px);
+  transition: transform 0.3s;
+}
+.mystery-btn:hover img:first-child {
+  transform: translateX(-2px) scale(1.1);
+}
+
+.mystery-btn:hover img:last-child {
+  transform: translateX(2px) scale(1.1);
 }
 </style>

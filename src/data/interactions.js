@@ -400,4 +400,35 @@ export const interactions = [
       'https://twitter.com/ERBloodflame/status/2032118669598474597',
     ],
   },
+  {
+    id: 54,
+    dateStart: '2026-03-15',
+    dateEnd: '2026-03-16',
+    type: 'Tweet & Reply',
+    tweets: [
+      'https://twitter.com/nerissa_en/status/2033144617571598446?ref_src=twsrc%5Etfw',
+      'https://twitter.com/nerissa_en/status/2033536090376941693?ref_src=twsrc%5Etfw',
+    ],
+  },
+  {
+    id: 55,
+    date: '2026-03-18',
+    type: 'Tweet & Reply',
+    tweets: ['https://twitter.com/nerissa_en/status/2034065891881849072?ref_src=twsrc%5Etfw'],
+  },
+  {
+    id: 56,
+    date: '2026-04-24',
+    type: 'Tweet & Quote Tweet',
+    tweets: [
+      'https://twitter.com/ERBloodflame/status/2047420250665173191?ref_src=twsrc%5Etfw',
+      'https://twitter.com/nerissa_en/status/2047466869096116395?ref_src=twsrc%5Etfw',
+    ],
+  },
+  {
+    id: 57,
+    date: '2025-08-02',
+    type: 'Tweet & Reply',
+    tweets: ['https://twitter.com/nerissa_en/status/1951440576387436884?ref_src=twsrc%5Etfw'],
+  },
 ]

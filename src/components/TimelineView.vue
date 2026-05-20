@@ -176,7 +176,7 @@ function isSelectedGroup(group) {
 
 <template>
   <div>
-    <!-- <div v-if="activeTweet !== null" class="focus-overlay" @click="activeTweet = null"></div> -->
+    <div v-if="activeTweet !== null" class="focus-overlay" @click="activeTweet = null"></div>
     <div class="archive-search">
       <input v-model="searchQuery" placeholder="Search archives..." class="archive-search-input" />
     </div>
@@ -212,6 +212,7 @@ function isSelectedGroup(group) {
                   class="tweet-wrapper"
                   :class="{ active: activeTweet === group.id + '-' + index }"
                   :data-key="group.id + '-' + index"
+                  :style="{ animationDelay: `${index * 120}ms` }"
                   @click="activeTweet = group.id + '-' + index"
                 >
                   <div v-if="!tweetLoaded[group.id + '-' + index]" class="tweet-skeleton"></div>
@@ -261,8 +262,8 @@ function isSelectedGroup(group) {
   bottom: 30px;
   right: 30px;
 
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
 
   border-radius: 50%;
   border: none;
@@ -271,27 +272,25 @@ function isSelectedGroup(group) {
   font-weight: bold;
 
   color: white;
-  background: rgba(20, 20, 30, 0.8);
+  background: rgba(255, 255, 255, 0.08);
 
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(14px);
 
   cursor: pointer;
-
+  font-size: 1.2rem;
   z-index: 999;
 
-  box-shadow:
-    0 0 12px rgba(56, 189, 248, 0.4),
-    0 0 24px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 
-  transition: all 0.25s ease;
+  transition: var(--transition-smooth);
 }
 
 .scroll-top:hover {
-  transform: translateY(-4px) scale(1.1);
+  transform: translateY(-4px) scale(1.05);
 
   box-shadow:
-    0 0 20px rgba(56, 189, 248, 0.7),
-    0 0 40px rgba(56, 189, 248, 0.4);
+    0 0 20px rgba(255, 59, 107, 0.18),
+    0 0 40px rgba(77, 163, 255, 0.1);
 }
 
 .scroll-top:active {
@@ -311,11 +310,15 @@ function isSelectedGroup(group) {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 60px;
   padding-left: 60px;
   margin-top: 80px;
   z-index: 0;
   isolation: isolate;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px 120px;
 }
 .timeline-note {
   width: fit-content;
@@ -361,7 +364,8 @@ function isSelectedGroup(group) {
 }
 
 .year-section {
-  margin-bottom: 40px;
+  margin-bottom: 100px;
+  position: relative;
 }
 
 .year-separator {
@@ -373,6 +377,38 @@ function isSelectedGroup(group) {
   padding-left: 20px;
   color: white;
   cursor: pointer;
+  position: sticky;
+  top: 20px;
+  z-index: 20;
+  display: flex;
+
+  padding: 12px 22px;
+
+  margin: 40px auto;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+
+  backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow: 0 0 20px rgba(255, 59, 107, 0.08);
+
+  font-size: 1.5rem;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  transition: var(--transition-smooth);
+  animation: ambientFloat 5s ease-in-out infinite;
+}
+.year-separator:hover {
+  transform: scale(1.03);
+
+  box-shadow:
+    0 0 30px rgba(255, 59, 107, 0.15),
+    0 0 50px rgba(77, 163, 255, 0.08);
 }
 .year-separator::before {
   content: '';
@@ -397,19 +433,20 @@ function isSelectedGroup(group) {
 .date-header {
   position: relative;
 
-  gap: 10px;
+  gap: 12px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
   color: #e5e7eb;
-
+  margin-bottom: 24px;
   margin: 30px 0;
-
+  display: flex;
   letter-spacing: 0.5px;
+  color: var(--text-primary);
 }
 
 .date-header::before,
@@ -465,8 +502,10 @@ function isSelectedGroup(group) {
 
 .tweets-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  transition: all 0.35s ease;
+  gap: 28px;
+  align-items: start;
 }
 .tweet-item {
   opacity: 0;
@@ -480,12 +519,18 @@ function isSelectedGroup(group) {
 }
 
 @keyframes fadeUp {
+  from {
+    opacity: 0;
+
+    transform: translateY(30px);
+  }
+
   to {
     opacity: 1;
+
     transform: translateY(0);
   }
 }
-
 @media (max-width: 1100px) {
   .tweets-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -860,7 +905,13 @@ function isSelectedGroup(group) {
     background-position: -200% 0;
   }
 }
+.date-section {
+  position: relative;
 
+  margin-bottom: 60px;
+
+  padding-left: 20px;
+}
 .date-section.active {
   border-left: 3px solid #ff2e2e;
 
@@ -868,35 +919,56 @@ function isSelectedGroup(group) {
     0 0 15px rgba(255, 0, 50, 0.4),
     0 0 30px rgba(59, 130, 246, 0.2);
 
-  transform: scale(1.01);
+  transform: scale(1.02);
+  animation: highlightPulse 0.6s ease;
 
   transition: all 0.3s ease;
 }
-
+@keyframes highlightPulse {
+  0% {
+    transform: scale(0.98);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.02);
+    opacity: 1;
+  }
+}
 .archive-search {
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
+  position: relative;
+  z-index: 10001;
+  pointer-events: none;
 }
-
 .archive-search-input {
-  width: 50%;
-  padding: 10px 16px;
+  width: min(700px, 90%);
+  padding: 16px 22px;
 
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
-  background: rgba(20, 20, 20, 0.6);
+  background: rgba(255, 255, 255, 0.05);
   color: white;
+  backdrop-filter: blur(16px);
+
+  color: white;
+
+  font-size: 1rem;
 
   outline: none;
 
-  transition: 0.2s;
+  transition: var(--transition-smooth);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .archive-search-input:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 0 20px rgba(255, 59, 107, 0.15),
+    0 0 40px rgba(77, 163, 255, 0.08);
 }
 
 @media (max-width: 768px) {
@@ -909,8 +981,50 @@ function isSelectedGroup(group) {
   position: relative;
   width: 100%;
   min-width: 0;
-}
+  background: rgba(255, 255, 255, 0.04);
 
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius: 24px;
+
+  padding: 12px;
+
+  backdrop-filter: blur(14px);
+
+  transition: var(--transition-smooth);
+
+  overflow: hidden;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  animation: fadeUp 0.8s ease both;
+}
+.tweet-wrapper:hover {
+  transform: translateY(-6px) scale(1.01);
+
+  border-color: rgba(255, 255, 255, 0.12);
+
+  box-shadow:
+    0 0 20px rgba(255, 59, 107, 0.16),
+    0 0 40px rgba(77, 163, 255, 0.1);
+  transform: scale(1.02);
+}
+.tweet-wrapper::before {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+
+  opacity: 0.8;
+}
 .twitter-tweet {
   width: 100% !important;
   min-width: 0 !important;
@@ -920,13 +1034,8 @@ function isSelectedGroup(group) {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(6px);
-  z-index: 50;
-}
-
-.tweet-wrapper {
-  transition: all 0.25s ease;
-  cursor: pointer;
+  backdrop-filter: blur(8px);
+  z-index: 40;
 }
 
 .tweets-grid:has(.tweet-wrapper.active) .tweet-wrapper {
@@ -935,13 +1044,22 @@ function isSelectedGroup(group) {
 
 .tweet-wrapper.active {
   opacity: 1 !important;
-  transform: scale(1.01);
-  z-index: 1;
+  transform: scale(1.05);
+  z-index: 50;
   position: relative;
   box-shadow: 0 0 20px rgba(255, 60, 90, 0.6);
 }
+@keyframes ambientFloat {
+  0% {
+    transform: translateY(0px);
+  }
 
-.tweet-wrapper:hover {
-  transform: scale(1.02);
+  50% {
+    transform: translateY(-4px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 </style>
