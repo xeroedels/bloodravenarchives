@@ -157,8 +157,14 @@ function restartTutorial() {
 <style scoped>
 .chronicle-layout {
   display: flex;
-  gap: 40px;
-  padding: 40px;
+  gap: 28px;
+  padding: 100px 24px 40px;
+
+  max-width: 1700px;
+
+  margin: 0 auto;
+
+  align-items: flex-start;
 }
 
 .left-panel {
@@ -183,6 +189,11 @@ function restartTutorial() {
   position: relative;
   min-height: 100vh;
   /* background: url('/.png'); */
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at top left, rgba(255, 59, 107, 0.08), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(77, 163, 255, 0.08), transparent 30%), #07070a;
 }
 
 .page-bg::before {
@@ -220,7 +231,17 @@ function restartTutorial() {
   transform: translateX(0);
   opacity: 1;
 }
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.45s ease;
+}
 
+.slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+
+  transform: translateX(40px);
+}
 .back-home {
   position: fixed;
   top: 26px;
@@ -393,27 +414,24 @@ function restartTutorial() {
   }
 }
 .tutorial-box {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-
+  background: rgba(10, 10, 15, 0.85);
+  position: relative;
   border-radius: 18px;
-  padding: 28px 26px;
+  padding: 30px;
 
-  width: 340px;
+  width: min(420px, 90vw);
 
   color: #e5e7eb;
   text-align: center;
 
-  border: 1px solid rgba(80, 120, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
 
-  box-shadow:
-    0 0 25px rgba(56, 189, 248, 0.25),
-    0 10px 40px rgba(0, 0, 0, 0.8);
-
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 
   transition: all 0.3s ease;
 
-  animation: tutorialPop 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: fadeUp 0.5s ease;
 }
 
 .tutorial-box h3 {

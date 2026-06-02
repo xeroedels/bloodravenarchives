@@ -103,24 +103,35 @@ function releaseCard(e) {
 
 .hub::before {
   content: '';
+
   position: absolute;
-  width: 1200px;
-  height: 1200px;
-  background: radial-gradient(circle, #ff003330, transparent 70%);
-  top: -400px;
-  left: -400px;
+
+  width: 900px;
+  height: 900px;
+
+  background: radial-gradient(circle, rgba(255, 0, 51, 0.1), transparent 70%);
+
+  top: -320px;
+  left: -320px;
+
+  filter: blur(20px);
 }
 
 .hub::after {
   content: '';
-  position: absolute;
-  width: 1000px;
-  height: 1000px;
-  background: radial-gradient(circle, #2aa8ff20, transparent 70%);
-  bottom: -300px;
-  right: -300px;
-}
 
+  position: absolute;
+
+  width: 800px;
+  height: 800px;
+
+  background: radial-gradient(circle, rgba(42, 168, 255, 0.08), transparent 70%);
+
+  bottom: -240px;
+  right: -240px;
+
+  filter: blur(20px);
+}
 .center {
   width: 100%;
   max-width: 900px;
@@ -133,15 +144,24 @@ function releaseCard(e) {
 }
 
 .title {
-  font-size: 64px;
-  margin-bottom: 10px;
+  font-size: clamp(3rem, 8vw, 5rem);
+
+  margin-bottom: 14px;
+
+  font-weight: 800;
+
+  letter-spacing: -2px;
 
   background: linear-gradient(90deg, #2aa8ff, #ff0033);
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
   text-shadow:
-    0 0 15px rgba(42, 168, 255, 0.4),
-    0 0 25px rgba(255, 0, 51, 0.4);
+    0 0 18px rgba(42, 168, 255, 0.25),
+    0 0 24px rgba(255, 0, 51, 0.18);
+
+  animation: fadeUp 1s ease;
 }
 h1 {
   word-break: break-word;
@@ -158,12 +178,20 @@ h1 {
   }
 }
 .subtitle {
-  color: #d0d0d0;
-  font-size: 18px;
-  margin-bottom: 60px;
-  letter-spacing: 0.3px;
-}
+  color: rgba(255, 255, 255, 0.72);
 
+  font-size: 1.1rem;
+
+  line-height: 1.7;
+
+  margin-bottom: 70px;
+
+  letter-spacing: 0.3px;
+
+  max-width: 650px;
+
+  margin-inline: auto;
+}
 .hub-buttons {
   display: flex;
   gap: 40px;
@@ -172,15 +200,18 @@ h1 {
 }
 
 .card {
+  position: relative;
+
   width: 320px;
-  height: 180px;
+  height: 190px;
 
-  border-radius: 16px;
+  border-radius: 28px;
 
-  background: rgba(20, 20, 20, 0.8);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
 
-  border: 1px solid #222;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  backdrop-filter: blur(16px);
 
   display: flex;
   flex-direction: column;
@@ -189,30 +220,51 @@ h1 {
 
   cursor: pointer;
 
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  transition: all 0.3s ease;
 
   transform-style: preserve-3d;
+
+  overflow: hidden;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card::before {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+
+  opacity: 0.7;
 }
 
 .card span {
-  font-size: 30px;
-  font-weight: 600;
+  font-size: 2rem;
+
+  font-weight: 700;
+
+  letter-spacing: -1px;
+
+  margin-bottom: 8px;
 }
 
 .card p {
-  margin-top: 12px;
+  font-size: 0.98rem;
 
-  font-size: 17px;
-
-  color: #d0d6e0;
+  color: rgba(255, 255, 255, 0.72);
 
   line-height: 1.6;
 
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
 
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.05);
+  max-width: 220px;
 }
 
 .card:hover p {
@@ -224,23 +276,26 @@ h1 {
 }
 
 .archive:hover {
-  transform: translateY(-6px) scale(1.03);
+  transform: translateY(-10px) scale(1.03);
+
+  border-color: rgba(255, 0, 51, 0.22);
 
   box-shadow:
-    0 0 20px #ff0033,
-    0 0 60px #ff003350;
+    0 0 30px rgba(255, 0, 51, 0.25),
+    0 0 70px rgba(255, 0, 51, 0.1);
 }
-
 .clips span {
   color: #2aa8ff;
 }
 
 .clips:hover {
-  transform: translateY(-6px) scale(1.03);
+  transform: translateY(-10px) scale(1.03);
+
+  border-color: rgba(42, 168, 255, 0.22);
 
   box-shadow:
-    0 0 20px #2aa8ff,
-    0 0 60px #2aa8ff50;
+    0 0 30px rgba(42, 168, 255, 0.22),
+    0 0 70px rgba(42, 168, 255, 0.1);
 }
 
 .back {
@@ -314,7 +369,7 @@ h1 {
 
   filter: blur(3px);
 
-  opacity: 0.85;
+  opacity: 0.45;
 
   animation: floatFire linear infinite;
 

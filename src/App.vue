@@ -1,6 +1,10 @@
-<script setup></script>
+<script setup>
+import LoadingOverlay from '@/components/LoadingOverlay.vue'
+</script>
 
 <template>
+  <LoadingOverlay />
+
   <router-view v-slot="{ Component }">
     <Transition name="fade" mode="out-in">
       <component :is="Component" />

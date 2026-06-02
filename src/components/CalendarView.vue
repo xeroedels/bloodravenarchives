@@ -256,15 +256,37 @@ function nextPickerYear() {
   position: relative;
   background: radial-gradient(circle at top, rgba(20, 20, 40, 0.4), transparent 70%);
   z-index: 20;
+  position: relative;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius: 28px;
+
+  padding: 24px;
+
+  backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 0 30px rgba(0, 0, 0, 0.3),
+    0 0 60px rgba(77, 163, 255, 0.06);
+
+  overflow: hidden;
+
+  animation: fadeUp 0.5s ease;
 }
 
 .calendar-header {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 10px;
+  display: flex;
 
-  margin-bottom: 12px;
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin-bottom: 24px;
 }
 
 .calendar-header button {
@@ -286,6 +308,26 @@ function nextPickerYear() {
   border-radius: 8px;
 }
 
+.calendar-header button,
+.close-calendar {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(255, 255, 255, 0.05);
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  backdrop-filter: blur(10px);
+}
+
 .calendar-header button:hover {
   background: #1f1f27;
 }
@@ -295,50 +337,63 @@ function nextPickerYear() {
   grid-template-columns: repeat(7, 1fr);
   gap: 8px;
 }
+
+.calendar::before {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background: linear-gradient(90deg, #ff4d88, #6ea8ff);
+
+  opacity: 0.7;
+}
+
 .day {
-  padding: 12px;
-  text-align: center;
+  position: relative;
 
-  background: rgba(25, 25, 35, 0.9);
+  aspect-ratio: 1;
 
-  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
 
   cursor: pointer;
 
   transition: all 0.25s ease;
 
-  position: relative;
+  font-size: 0.95rem;
 
-  border: 1px solid rgba(80, 120, 255, 0.1);
-
-  font-weight: 500;
+  overflow: hidden;
 }
 
 .day:hover {
-  transform: translateY(-3px) scale(1.05);
+  transform: translateY(-3px);
 
-  background: rgba(45, 45, 65, 0.95);
+  border-color: rgba(255, 255, 255, 0.14);
 
-  border-color: #5f8cff;
+  background: rgba(255, 255, 255, 0.07);
 
-  box-shadow:
-    0 0 12px rgba(80, 140, 255, 0.5),
-    0 0 20px rgba(80, 140, 255, 0.25);
+  box-shadow: 0 0 16px rgba(255, 80, 120, 0.14);
 }
 .day.active {
-  background: linear-gradient(135deg, #ff2a4d, #ff5a7a);
+  background: linear-gradient(135deg, rgba(255, 77, 136, 0.22), rgba(110, 168, 255, 0.18));
 
-  color: white;
+  border-color: rgba(255, 255, 255, 0.18);
 
-  box-shadow:
-    0 0 12px rgba(255, 60, 90, 0.7),
-    0 0 25px rgba(255, 60, 90, 0.4);
-
-  border: none;
-
-  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 80, 120, 0.22);
 }
-
 .day.active::after {
   content: '';
 
@@ -369,6 +424,25 @@ function nextPickerYear() {
   letter-spacing: 0.5px;
   text-align: center;
   justify-self: center;
+  font-size: 1.3rem;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+
+  background: linear-gradient(90deg, #6ea8ff, #ff4d88);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.calendar-title:hover {
+  opacity: 0.8;
+
+  transform: scale(1.03);
 }
 .month-picker {
   display: flex;
@@ -518,32 +592,30 @@ function nextPickerYear() {
 .tooltip {
   position: absolute;
 
-  bottom: 130%;
+  bottom: 110%;
   left: 50%;
 
   transform: translateX(-50%);
 
-  background: rgba(10, 10, 15, 0.95);
-
-  color: #9ccaff;
-
-  font-size: 12px;
-
   padding: 6px 10px;
 
-  border-radius: 8px;
+  border-radius: 10px;
+
+  background: rgba(10, 10, 15, 0.95);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  color: white;
+
+  font-size: 0.75rem;
 
   white-space: nowrap;
 
-  border: 1px solid rgba(80, 120, 255, 0.3);
+  pointer-events: none;
 
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.5),
-    0 0 10px rgba(80, 120, 255, 0.3);
+  z-index: 20;
 
-  opacity: 0;
-
-  animation: tooltipFade 0.2s forwards;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes tooltipFade {

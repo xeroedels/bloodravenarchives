@@ -37,8 +37,8 @@ function scrollToSocials() {
 <template>
   <div class="home">
     <div class="hero">
-      <h1>BloodRaven Archive</h1>
-      <p>A fan chronicle of BloodRaven moments.</p>
+      <h1 class="section-title">BloodRaven Archive</h1>
+      <p class="section-subtitle">A fan chronicle of BloodRaven moments.</p>
 
       <button @click="enterArchive">Enter Chronicle</button>
       <button class="mystery-btn" @click="goQuiz">
@@ -118,18 +118,23 @@ function scrollToSocials() {
   background: black;
   color: white;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
   padding: 0 16px;
 }
 
 .home::before {
   content: '';
+
   position: absolute;
+
   inset: 0;
+
   background:
-    radial-gradient(circle at 20% 40%, #ff0033 0%, transparent 20%),
-    radial-gradient(circle at 80% 60%, #ff0033 0%, transparent 20%);
-  opacity: 0.2;
+    radial-gradient(circle at 20% 40%, rgba(255, 0, 51, 0.08), transparent 28%),
+    radial-gradient(circle at 80% 60%, rgba(77, 163, 255, 0.06), transparent 28%);
+
+  opacity: 0.7;
+
   pointer-events: none;
 }
 button {

@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-
+import questions from '@/data/quiz'
 const router = useRouter()
 
 function goBack() {
@@ -25,138 +25,7 @@ onMounted(() => {
     leaderboard.value = JSON.parse(savedLeaderboard)
   }
 })
-const questions = [
-  {
-    question: 'Who is Jailbird #55?',
-    options: [
-      { name: 'Shiori', image: 'public/Shiori_Novella_Portrait.webp', correct: false },
-      { name: 'Nerissa', image: 'public/nerissaportrait.png', correct: false },
-      { name: 'Kiara', image: 'public/Takanashi_Kiara_Portrait.webp', correct: false },
-      { name: 'Liz', image: 'public/lizpotrait.png', correct: true },
-    ],
-  },
-  {
-    question: 'Which one is the first ever Bloodraven one on one stream?',
-    options: [
-      {
-        name: 'Powerwash stream with Rissa/Liz',
-        correct: true,
-      },
-      {
-        name: 'Wicked Part One Watchalong',
-        correct: false,
-      },
-      {
-        name: 'League of Legends Collab',
-        correct: false,
-      },
-      {
-        name: 'ENReco Season 1',
-        correct: false,
-      },
-    ],
-  },
-  {
-    question: 'Who is Liz’s mama?',
-    options: [
-      { name: 'Joe Mama', correct: false },
-      { name: 'MEPHIST0216', correct: true },
-      { name: 'Mama Rissa', correct: false },
-      { name: 'Yagoo', correct: false },
-    ],
-  },
-  {
-    question: 'Which song from Wicked makes Nerissa get reminded of ENReco?',
-    options: [
-      { name: 'No One Mourns The Wicked', correct: false },
-      { name: 'What Is This Feeling', correct: false },
-      { name: 'No Good Deed', correct: true },
-      { name: 'Defying Gravity', correct: false },
-    ],
-  },
-  {
-    question: 'What did Liz call Nerissa on the among us stream?',
-    options: [
-      { name: 'Ravencroft', correct: false },
-      { name: 'My Pwincess', correct: true },
-      { name: 'Juliet', correct: false },
-      { name: 'Rissa', correct: false },
-    ],
-  },
-  {
-    question: 'Who is Rissa’s mama?',
-    options: [
-      { name: 'Nekojira', correct: false },
-      { name: 'EB+', correct: true },
-      { name: 'rollsheeeep', correct: false },
-      { name: 'Yomosaka', correct: false },
-    ],
-  },
-  {
-    question: 'Who calls Elizabeth with the name of Romeo in Enigmatic Recollection?',
-    options: [
-      { name: 'Roa Pandora', correct: false },
-      { name: 'Shiori Nyavella', correct: false },
-      { name: 'Nerissa Pickles Mustard Linkin Park Juliet Bloodflame Ravencroft', correct: true },
-      { name: 'Cecilia Immerkind', correct: false },
-    ],
-  },
-  {
-    question: 'Which episode did Nerissa die in Chapter 1 of EnReco?',
-    options: [
-      { name: 'Episode 6', correct: true },
-      { name: 'Episode 7', correct: false },
-      { name: 'Episode 5', correct: false },
-      { name: 'Episode 3', correct: false },
-    ],
-  },
-  {
-    question: 'Which poem did Nerissa write in Chapter 2 of EnReco?',
-    options: [
-      { name: 'To me, fair friend, you never can be old', correct: false },
-      { name: 'Maven In Blue', correct: true },
-      { name: 'O, how much more doth beauty beauteous seem', correct: false },
-      { name: 'From hyou have I been absent in the spring', correct: false },
-    ],
-  },
-  {
-    question:
-      'What did Elizabeth dare Nerissa to do during Nerissa’s birthday on November 21st, 2024?',
-    options: [
-      { name: 'I dare you to pinch Mococos cheeks', correct: false },
-      { name: 'I dare you to give us a kiss', correct: false },
-      { name: ' I dare you to dump Fauna', correct: true },
-      { name: 'Try to touch your nose with your tongue', correct: false },
-    ],
-  },
-  {
-    question:
-      'Which Episode or Day in Enigmatic Recollection when Lady Bloodflame beat Nerissa Juliet with a stick?',
-    options: [
-      { name: 'Episode/Day 6', correct: false },
-      { name: 'Episode/Day 7', correct: false },
-      { name: 'Episode/Day 8', correct: false },
-      { name: 'Episode/Day 5', correct: true },
-    ],
-  },
-  {
-    question: 'What did Nerissa Mii say to Liz Mii in their confession?',
-    options: [
-      { name: 'Love you Queen', correct: true },
-      { name: 'Pwincess', correct: false },
-      { name: 'I like your vibe, Elizabeth', correct: false },
-      { name: 'What is up with you?', correct: false },
-    ],
-  },
-  {
-    question:
-      'True or False that Nerissa Pickles Mustard Linkin Park Juliet Bloodflame Ravencroft does not become a witch in ENReco Chapter 2?',
-    options: [
-      { name: 'True', correct: false },
-      { name: 'False', correct: true },
-    ],
-  },
-]
+
 const currentQuestion = ref(0)
 const answers = ref(Array(questions.length).fill(null))
 
@@ -331,19 +200,28 @@ function startQuiz() {
   width: 140px;
   height: 160px;
 
-  border-radius: 14px;
+  border-radius: 20px;
+
   overflow: hidden;
 
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  backdrop-filter: blur(12px);
 
   cursor: pointer;
-  transition: 0.25s ease;
+
+  transition: all 0.3s ease;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  position: relative;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 .answer-card.correct {
   border: 2px solid #22c55e;
@@ -354,10 +232,14 @@ function startQuiz() {
   box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
 }
 .answer-card:hover {
-  transform: translateY(-6px) scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 80, 120, 0.3);
-}
+  transform: translateY(-8px) scale(1.04);
 
+  border-color: rgba(255, 255, 255, 0.14);
+
+  box-shadow:
+    0 0 20px rgba(255, 80, 120, 0.18),
+    0 0 40px rgba(100, 150, 255, 0.08);
+}
 .answer-card.selected {
   outline: 2px solid #ff4d88;
   box-shadow: 0 0 20px rgba(255, 80, 120, 0.6);
@@ -392,57 +274,126 @@ function startQuiz() {
 }
 
 .question-nav button {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.08);
-  color: white;
-  cursor: pointer;
-  transition: 0.2s;
-}
+  width: 42px;
+  height: 42px;
 
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(255, 255, 255, 0.04);
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  backdrop-filter: blur(8px);
+}
 .question-nav button:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
 .question-nav button.active {
-  background: #ff4d88;
-  box-shadow: 0 0 15px #ff4d88;
-}
+  background: linear-gradient(135deg, #ff4d88, #6ea8ff);
 
+  box-shadow: 0 0 18px rgba(255, 80, 120, 0.35);
+
+  transform: scale(1.08);
+}
 .quiz-container {
-  max-width: 900px;
+  position: relative;
+
+  width: min(100%, 980px);
+
   margin: 0 auto;
-  padding: 40px;
-  border-radius: 20px;
+
+  padding: 48px;
+
+  border-radius: 32px;
 
   background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  backdrop-filter: blur(20px);
 
   box-shadow:
-    0 0 40px rgba(255, 50, 100, 0.15),
-    0 0 80px rgba(100, 150, 255, 0.08);
+    0 0 40px rgba(255, 50, 100, 0.12),
+    0 0 80px rgba(100, 150, 255, 0.06);
+
+  overflow: hidden;
+
+  animation: fadeUp 0.8s ease;
 }
+
+.quiz-container::before {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background: linear-gradient(90deg, #ff4d88, #6ea8ff);
+
+  opacity: 0.8;
+}
+
 .quiz-title {
-  font-size: 32px;
-  margin-bottom: 20px;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+
+  margin-bottom: 24px;
+
+  font-weight: 800;
+
+  letter-spacing: -2px;
 
   background: linear-gradient(90deg, #6fb1ff, #ff4d88);
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  text-shadow: 0 0 20px rgba(255, 80, 120, 0.4);
+  text-shadow: 0 0 20px rgba(255, 80, 120, 0.25);
+
+  animation: fadeUp 1s ease;
 }
 .quiz-section {
-  font-size: 22px;
-  margin: 20px 0 30px;
-  opacity: 0.9;
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+
+  line-height: 1.5;
+
+  margin: 30px 0 40px;
+
+  opacity: 0.95;
+
+  max-width: 700px;
+
+  margin-inline: auto;
 }
 .quiz-page {
-  position: relative;
-}
+  min-height: 100vh;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  color: white;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at top left, rgba(255, 59, 107, 0.08), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(77, 163, 255, 0.08), transparent 30%), #07070a;
+}
 .quit-btn {
   position: absolute;
   top: 20px;
@@ -627,5 +578,81 @@ function startQuiz() {
   transform: scale(1.05);
 
   box-shadow: 0 0 20px rgba(255, 80, 120, 0.4);
+}
+@media (max-width: 768px) {
+  .quiz-container {
+    padding: 24px 18px;
+
+    border-radius: 24px;
+  }
+
+  .quiz-title {
+    font-size: 2.2rem;
+  }
+
+  .question-nav {
+    flex-wrap: wrap;
+  }
+
+  .question-nav button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .answers-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 16px;
+  }
+
+  .answer-card {
+    height: auto;
+
+    min-height: 150px;
+  }
+
+  .answer-card p {
+    font-size: 0.9rem;
+
+    padding: 0 6px 10px;
+  }
+
+  .final-score {
+    font-size: 3rem;
+  }
+
+  .leaderboard-row {
+    font-size: 0.92rem;
+  }
+}
+@media (max-width: 480px) {
+  .answers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .answer-card {
+    max-width: 100%;
+  }
+
+  .start-title {
+    font-size: 2.2rem;
+  }
+
+  .name-input {
+    width: 100%;
+  }
+
+  .start-btn,
+  .next-btn,
+  .restart-btn {
+    width: 100%;
+  }
+}
+@media (hover: none) {
+  .answer-card:hover {
+    transform: none;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  }
 }
 </style>

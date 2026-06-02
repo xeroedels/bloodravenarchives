@@ -1,44 +1,71 @@
-# bloodraven.date
+# BloodRaven Archive
 
-This template should help get you started developing with Vue 3 in Vite.
+An interactive archive website built with Vue.js featuring timelines, clips, quizzes, and searchable content.
 
-## Recommended IDE Setup
+## Live Demo
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+🌐 https://xeroedels.github.io/bloodravenarchives/#/
 
-## Recommended Browser Setup
+## Repository
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+📂 https://github.com/xeroedels/bloodravenarchives
 
-## Customize configuration
+## Features
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- Interactive Timeline
+- Year Filtering
+- Expandable Event Cards
+- BloodRaven Clips Archive
+- Quiz System
+- Persistent Leaderboard
+- Responsive Design
+- Page Transitions
+- Scroll To Top Button
 
-## Project Setup
+## Screenshots
 
-```sh
+### Homepage
+
+![Homepage](./screenshots/home.png)
+![Homepage](./screenshots/home 2.png)
+
+### Gateway
+
+![Gateway](./screenshots/gateway.png)
+
+### Timeline
+
+![Timeline](./screenshots/timeline.png)
+
+## Tech Stack
+
+- Vue.js
+- JavaScript
+- HTML5
+- CSS3
+- Vite
+- Local Storage
+
+## Installation
+
+```bash
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+## Build for Production
 
-```sh
+```bash
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## Future Plans
 
-```sh
-npm run lint
-```
+- Tutorial / Onboarding Overlay
+- Additional Archive Categories
+- More Quiz Content
+- Advanced Search Features
+
+## Author
+
+Xero
