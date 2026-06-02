@@ -2,10 +2,10 @@ const questions = [
   {
     question: 'Who is Jailbird #55?',
     options: [
-      { name: 'Shiori', image: 'public/Shiori_Novella_Portrait.webp', correct: false },
-      { name: 'Nerissa', image: 'public/nerissaportrait.png', correct: false },
-      { name: 'Kiara', image: 'public/Takanashi_Kiara_Portrait.webp', correct: false },
-      { name: 'Liz', image: 'public/lizpotrait.png', correct: true },
+      { name: 'Shiori', image: 'bloodravenarchives/Shiori_Novella_Portrait.webp', correct: false },
+      { name: 'Nerissa', image: 'bloodravenarchives/nerissaportrait.png', correct: false },
+      { name: 'Kiara', image: 'bloodravenarchives/Takanashi_Kiara_Portrait.webp', correct: false },
+      { name: 'Liz', image: 'bloodravenarchives/lizpotrait.png', correct: true },
     ],
   },
   {
