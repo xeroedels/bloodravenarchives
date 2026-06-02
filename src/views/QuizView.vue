@@ -46,8 +46,8 @@ function selectAnswer(index) {
   }
 }
 
-const correctAnswer = new Audio('public/VERYGOOD.wav')
-const wrongAnswer = new Audio('public/bonktwo.mp3')
+const correctAnswer = new Audio('/bloodravenarchives/VERYGOOD.wav')
+const wrongAnswer = new Audio('/bloodravenarchives/bonktwo.mp3')
 correctAnswer.volume = 0.6
 wrongAnswer.volume = 0.6
 
