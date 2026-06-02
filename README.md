@@ -27,7 +27,7 @@ An interactive archive website built with Vue.js featuring timelines, clips, qui
 ### Homepage
 
 ![Homepage](./screenshots/home.png)
-![Homepage](./screenshots/home 2.png)
+![Homepage](./screenshots/home2.png)
 
 ### Gateway
 
