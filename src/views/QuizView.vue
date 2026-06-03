@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import questions from '@/data/quiz'
 const router = useRouter()
-
+const base = import.meta.env.BASE_URL
 function goBack() {
   router.push('/')
 }
@@ -46,8 +46,8 @@ function selectAnswer(index) {
   }
 }
 
-const correctAnswer = new Audio('${base}VERYGOOD.wav')
-const wrongAnswer = new Audio('${base}bonktwo.mp3')
+const correctAnswer = new Audio(`${base}VERYGOOD.wav`)
+const wrongAnswer = new Audio(`${base}bonktwo.mp3`)
 correctAnswer.volume = 0.6
 wrongAnswer.volume = 0.6
 

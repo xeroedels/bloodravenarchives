@@ -177,6 +177,7 @@ function isSelectedGroup(group) {
 <template>
   <div>
     <div v-if="activeTweet !== null" class="focus-overlay" @click="activeTweet = null"></div>
+    <!--search field box-->
     <div class="archive-search">
       <input v-model="searchQuery" placeholder="Search archives..." class="archive-search-input" />
     </div>
@@ -940,7 +941,7 @@ function isSelectedGroup(group) {
   justify-content: center;
   position: relative;
   z-index: 10001;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 .archive-search-input {
   width: min(700px, 90%);
